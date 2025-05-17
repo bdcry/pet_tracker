@@ -3,7 +3,7 @@ import { RequestEventData } from '../services/eventApiTypes';
 import { eventApi } from '../services/eventsApiClient';
 
 type useCreateEventsReturn = {
-  mutate: (body: RequestEventData) => void;
+  handleSubmitMutate: (body: RequestEventData) => void;
   isPending: boolean;
 };
 
@@ -24,5 +24,5 @@ export const useCreateEvents = (): useCreateEventsReturn => {
       console.error(error, 'Упс, ошибка c каким-то кодом (позже обработаем)');
     },
   });
-  return { mutate, isPending };
+  return { handleSubmitMutate: mutate, isPending };
 };

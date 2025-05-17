@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import { Login } from "./Login";
-
 import "../../../assets/fonts/font.css";
+import { Login } from "../../../../features/Login/LoginFeature";
 
 const meta = {
   title: "Shared/UI/Login",

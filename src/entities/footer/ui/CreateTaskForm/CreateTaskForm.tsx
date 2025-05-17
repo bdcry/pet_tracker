@@ -18,11 +18,11 @@ type Form = {
 export const CreateTaskForm = ({
   onClose,
   isPending,
-  mutate,
+  onSubmitMutate,
 }: {
   onClose: (active: boolean) => void;
   isPending: boolean;
-  mutate: (data: RequestEventData) => void;
+  onSubmitMutate: (data: RequestEventData) => void;
 }): JSX.Element => {
   const {
     register,
@@ -30,13 +30,13 @@ export const CreateTaskForm = ({
     formState: { errors },
   } = useForm<Form>();
 
-  const onSubmit = async (data: Form) => {
-    await mutate(data);
+  const handleSubmitMutateForm = async (data: Form) => {
+    await onSubmitMutate(data);
     onClose(false);
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(handleSubmitMutateForm)}>
       <label className={styles.label}>
         Название события
         <input

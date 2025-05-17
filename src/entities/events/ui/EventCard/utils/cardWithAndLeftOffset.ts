@@ -1,4 +1,5 @@
-import { Task } from '../../features/Calendar/CalendarFeature';
+import { Task } from "../../../../../features/Calendar/hooks/useCalendarHandlers";
+
 
 const WIDTH_PERCENT = 100;
 

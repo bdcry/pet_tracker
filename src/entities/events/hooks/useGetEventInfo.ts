@@ -14,7 +14,7 @@ import { eventApi } from '../services/eventsApiClient';
 //   owner_id: number;
 // };
 
-// export const useGetEventInfo = ({ task_id }: { task_id: number }): useGetEventInfoResponse => {
+// export const useG22etEventInfo = ({ task_id }: { task_id: number }): useGetEventInfoResponse => {
 
 //   const getEventInfo =  async () => {
 //     return await eventApi.getInfo(task_id);
@@ -44,5 +44,5 @@ export type EventInfo = {
 
 export const getEventInfo = async ({ task_id }: { task_id: number }): Promise<EventInfo> => {
   const response = await eventApi.getInfo(task_id);
-  return response;
+  return response as EventInfo;
 }

@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import { Registration } from "./Registration";
-
 import "../../../assets/fonts/font.css";
+import { Registration } from "../../../../features/Registration/RegistrationFeature";
 
 const meta = {
   title: "Shared/UI/Registration",

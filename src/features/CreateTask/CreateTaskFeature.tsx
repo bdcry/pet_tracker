@@ -7,7 +7,7 @@ import { useCreateEvents } from '../../entities/events/hooks/useCreateEvents';
 export const CreateTaskFeature = (): JSX.Element => {
   const [modalActive, setModalActive] = useState(false);
 
-  const { mutate, isPending } = useCreateEvents();
+  const { handleSubmitMutate, isPending } = useCreateEvents();
   return (
     <>
       <CreateTaskButton
@@ -15,7 +15,7 @@ export const CreateTaskFeature = (): JSX.Element => {
       />
 
       <Modal active={modalActive} setActive={setModalActive} title='Создать задачу'>
-        <CreateTaskForm onClose={setModalActive}  isPending={isPending} mutate={mutate} />
+        <CreateTaskForm onClose={setModalActive}  isPending={isPending} onSubmitMutate={handleSubmitMutate} />
       </Modal>
     </>
   );
