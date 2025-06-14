@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  frontend:
+    image: frontend_pet_tracker
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./dist:/app/dist
