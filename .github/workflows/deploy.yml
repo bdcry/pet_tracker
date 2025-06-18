@@ -32,9 +32,3 @@ jobs:
           sshpass -p "$SERVER_PASSWORD" \
             scp -o StrictHostKeyChecking=no -r dist/* \
             $SERVER_USER@$SERVER_HOST:$TARGET_DIR
-      - name: Restart nginx
-        run: |
-          sshpass -p "$SERVER_PASSWORD" \
-          ssh -o StrictHostKeyChecking=no \
-          $SERVER_USER@$SERVER_HOST \
-          "sudo systemctl restart nginx"
