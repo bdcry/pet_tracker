@@ -6,7 +6,7 @@ import App from './App.tsx';
 import './i18n.ts';
 
 scan({
-  enabled: true,
+  enabled: false,
 })
 
 createRoot(document.getElementById('root')!).render(
