@@ -1,8 +1,11 @@
-name: CI/CD
+name: CI
 on:
   push:
     branches:
       - timofey
+  pull_request: 
+    branches:
+      - main
 
 jobs:
   linter: 
