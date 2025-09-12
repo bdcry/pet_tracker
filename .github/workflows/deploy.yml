@@ -5,30 +5,45 @@ on:
       - timofey
 
 jobs:
-  build-and-deploy:
+  linter: 
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-      - name: Install Dependencies
+          node-version: '22'
+      - name: Install Dependecies
         run: yarn install
-      - name: Build Docker Image
-        run: |
-          docker compose up -d --build
-          docker compose down
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-      - name: Deploy
-        env:
-          SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-          SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
-          TARGET_DIR: ${{ secrets.TARGET_DIR }}
-        run: |
-          sshpass -p "$SERVER_PASSWORD" \
-            scp -o StrictHostKeyChecking=no -r dist/* \
-            $SERVER_USER@$SERVER_HOST:$TARGET_DIR
+      - name: Linter Test
+        run: yarn lint
+
+
+  # build-and-deploy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '20'
+  #     - name: Install Dependencies
+  #       run: yarn install
+  #     - name: Build Docker Image
+  #       run: |
+  #         docker compose up -d --build
+  #         docker compose down
+  #     - name: Install sshpass
+  #       run: sudo apt-get update && sudo apt-get install -y sshpass
+  #     - name: Deploy
+  #       env:
+  #         SERVER_HOST: ${{ secrets.SERVER_HOST }}
+  #         SERVER_USER: ${{ secrets.SERVER_USER }}
+  #         SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+  #         TARGET_DIR: ${{ secrets.TARGET_DIR }}
+  #       run: |
+  #         sshpass -p "$SERVER_PASSWORD" \
+  #           scp -o StrictHostKeyChecking=no -r dist/* \
+  #           $SERVER_USER@$SERVER_HOST:$TARGET_DIR
